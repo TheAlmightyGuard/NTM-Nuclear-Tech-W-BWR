@@ -1,0 +1,6 @@
+## Changed
+* Blueprint folders can now be bought on bobmazon (64 for blue recipes, 256 for beige ones)
+
+## Fixed
+* Fixed the QMAW loader crashing servers
+  * Oops
