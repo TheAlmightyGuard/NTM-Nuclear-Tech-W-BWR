@@ -1,4 +1,8 @@
+# Still a WIP. DO NOT DOWNLOAD
 # HBM's Nuclear Tech Mod for Minecraft 1.7.10
+## This is a forked version of the original mod where this version will include BWR system.
+
+
 
 [NTM on Modrinth](https://modrinth.com/mod/ntm)
 
