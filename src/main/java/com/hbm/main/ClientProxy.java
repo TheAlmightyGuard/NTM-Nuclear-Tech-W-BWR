@@ -80,6 +80,7 @@ import com.hbm.tileentity.bomb.*;
 import com.hbm.tileentity.deco.*;
 import com.hbm.tileentity.machine.*;
 import com.hbm.tileentity.machine.albion.*;
+import com.hbm.tileentity.machine.bwr.TileEntityMachineBWRReactorVessel;
 import com.hbm.tileentity.machine.oil.*;
 import com.hbm.tileentity.machine.rbmk.*;
 import com.hbm.tileentity.machine.storage.*;
@@ -190,6 +191,13 @@ public class ClientProxy extends ServerProxy {
 
 	@Override
 	public void registerTileEntitySpecialRenderer() {
+		
+		// BWR
+		ClientRegistry.bindTileEntitySpecialRenderer(
+        		TileEntityMachineBWRReactorVessel.class, 
+            new RenderBWRReactorVessel()
+        );
+		
 		//test crap
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityObjTester.class, new RendererObjTester());
 		//deco

@@ -46,6 +46,8 @@ import com.hbm.world.feature.OreCave;
 import com.hbm.world.feature.OreLayer3D;
 import com.hbm.world.feature.SchistStratum;
 import com.hbm.world.generator.CellularDungeonFactory;
+
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.*;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -57,6 +59,8 @@ import cpw.mods.fml.common.event.FMLMissingMappingsEvent.MissingMapping;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -88,6 +92,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Random;
+
+// BWR
+import com.hbm.blocks.machine.bwr.*;
+import com.hbm.tileentity.machine.bwr.*;
+
 
 @Mod(modid = RefStrings.MODID, name = RefStrings.NAME, version = RefStrings.VERSION)
 public class MainRegistry {
@@ -651,8 +660,9 @@ public class MainRegistry {
 			HbmKeybinds keyHandler = new HbmKeybinds();
 			FMLCommonHandler.instance().bus().register(keyHandler);
 		}
+		
 	}
-
+	
 	//yes kids, this is where we would usually register commands
 	@EventHandler
 	public void serverStart(FMLServerStartingEvent event) {
@@ -1435,6 +1445,7 @@ public class MainRegistry {
 		remapItems.put("hbm:item.antiknock", ModItems.fuel_additive);
 		remapItems.put("hbm:item.kit_toolbox_empty", ModItems.toolbox);
 		remapItems.put("hbm:item.kit_toolbox", ModItems.legacy_toolbox);
+		
 
 		for(MissingMapping mapping : event.get()) {
 

@@ -21,6 +21,7 @@ import com.hbm.lib.ModDamageSource;
 import com.hbm.lib.RefStrings;
 import com.hbm.main.MainRegistry;
 import com.hbm.tileentity.DoorDecl;
+import com.hbm.tileentity.machine.bwr.TileEntityMachineBWRReactorVessel;
 import com.hbm.tileentity.machine.storage.TileEntityFileCabinet;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
@@ -36,6 +37,11 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import cpw.mods.fml.common.Loader;
 
+//BWR
+import net.minecraft.util.ResourceLocation;
+import com.hbm.blocks.machine.bwr.*;
+
+
 import java.util.ArrayList;
 
 public class ModBlocks {
@@ -43,6 +49,7 @@ public class ModBlocks {
 	public static void mainRegistry() {
 		initializeBlock();
 		registerBlock();
+		registerBWRTileEntities();
 	}
 
 	public static Block event_tester;
@@ -1251,11 +1258,18 @@ public class ModBlocks {
 	public static Block wand_tandem;
 
 	public static Block logic_block;
+	
+	// BWR	
+	public static Block bwr_rpv;
+	
 
 	public static Material materialGas = new MaterialGas();
 
 	private static void initializeBlock() {
 
+		bwr_rpv = new BWRReactorVessel(Material.iron);
+		
+		
 		event_tester = new TestEventTester(Material.iron).setBlockName("event_tester").setCreativeTab(null).setHardness(2.5F).setResistance(0.0F).setBlockTextureName(RefStrings.MODID + ":event_tester");
 		obj_tester = new TestObjTester(Material.iron).setBlockName("obj_tester").setCreativeTab(null).setHardness(2.5F).setResistance(10.0F);
 		test_core = new TestCore(Material.iron).setBlockName("test_core").setCreativeTab(null).setHardness(2.5F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":test_core");
@@ -2418,6 +2432,9 @@ public class ModBlocks {
 	}
 
 	private static void registerBlock() {
+		
+		//BWR
+		GameRegistry.registerBlock(bwr_rpv, "bwr_reactor");
 		//Test
 		GameRegistry.registerBlock(event_tester, event_tester.getUnlocalizedName());
 		GameRegistry.registerBlock(obj_tester, obj_tester.getUnlocalizedName());
@@ -3573,6 +3590,10 @@ public class ModBlocks {
 		register(wand_tandem);
 
 		register(logic_block);
+	}
+	
+	private static void registerBWRTileEntities() {
+		GameRegistry.registerTileEntity(TileEntityMachineBWRReactorVessel.class, "hbm" + ".tileentity." + "TileEntityMachineBWRReactorVessel");
 	}
 
 	private static void register(Block b) {
